@@ -1,0 +1,35 @@
+{
+  "name": "curricula",
+  "version": "0.0.0",
+  "description": "Manage academic careers",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": "http://github.com/filosunam/curricula",
+  "author": "Marco Godínez <markotom@gmail.com>",
+  "readmeFilename": "readme.md",
+  "dependencies": {
+    "requirejs": "~2.1.11",
+    "underscore": "~1.6.0",
+    "express": "~3.4.8",
+    "less-middleware": "~0.1.15",
+    "ejs": "~0.8.5",
+    "node-restful": "~0.1.14",
+    "passport": "~0.2.0",
+    "passport-local": "~1.0.0",
+    "connect-mongo": "~0.4.0",
+    "jquery-file-upload-middleware": "~0.1.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-preprocess": "~4.0.0",
+    "grunt-contrib-jst": "~0.5.1",
+    "grunt-release": "~0.7.0",
+    "load-grunt-tasks": "~0.3.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.2",
+    "grunt-express-server": "~0.4.13",
+    "grunt-contrib-jshint": "~0.8.0"
+  }
+}

@@ -1,0 +1,431 @@
+<h1 class="bind-fullname"></h1>
+<br>
+<form class="form-horizontal" role="form">
+
+  <!-- fieldset -->
+  <fieldset>
+    <!-- Degree -->
+    <div class="form-group">
+      <label for="degree" class="col-sm-2 control-label">Grado</label>
+      <div class="col-sm-10">
+        <select class="form-control saveOnChange" id="degree">
+          <option value="">Selecciona el grado</option>
+          <% var degrees = ['Licenciatura', 'Maestría', 'Doctorado']; %>
+          <% _.each(degrees, function (d) { %>
+          <option<% if (d === degree) { %> selected<% } %>><%- d%></option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+
+    <!-- Firstname & Lastname -->
+    <div class="form-group">
+      <label for="firstname" class="col-sm-2 control-label">Nombre</label>
+      <div class="col-sm-10">
+        <div class="row">
+          <div class="col-xs-4">
+            <input type="text" class="form-control" id="firstname" placeholder="Añadir nombre" value="<%- firstname %>">
+          </div>
+          <div class="col-xs-8">
+            <input type="text" class="form-control" id="lastname" placeholder="Añadir apellidos" value="<%- lastname %>">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image -->
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Imagen</label>
+      <div id="fileuploader" class="col-sm-10"></div>
+    </div>
+
+    <!-- Genre -->
+    <div class="form-group">
+      <label for="genre" class="col-sm-2 control-label">Género</label>
+      <div class="col-sm-10">
+        <select class="form-control saveOnChange" id="genre">
+          <option value="">Selecciona el género</option>
+          <% var genres = ['Femenino', 'Masculino']; %>
+          <% _.each(genres, function (g) { %>
+          <option<% if (g === genre) { %> selected<% } %>><%- g%></option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+
+    <!-- R.F.C. -->
+    <div class="form-group">
+      <label for="rfc" class="col-sm-2 control-label">R.F.C.</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="rfc" placeholder="Añadir R.F.C." value="<%- rfc %>">
+      </div>
+    </div>
+
+    <!-- Birth -->
+    <div class="form-group">
+      <label for="birth-day" class="col-sm-2 control-label">Nacimiento</label>
+      <div class="col-sm-10">
+        <div class="row">
+          <div class="col-xs-4">
+            <select id="birth-day" class="form-control">
+              <option value="">Seleccionar día</option>
+              <% var day = moment(birth).format('D') %>
+              <% for (var d = 1; d <= 31; d++) { %>
+                <option value="<%- d %>" <% if (d == day) { %> selected<% } %>><%- moment({ day: d }).format('DD') %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <select id="birth-month" class="form-control">
+              <option value="">Seleccionar mes</option>
+              <% var month = moment(birth).format('M') - 1 %>
+              <% for (var m = 0; m <= 11; m++) { %>
+                <option value="<%- m %>" <% if (m == month) { %> selected<% } %>><%- moment({ month: m }).format('MMMM') %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="col-xs-4">
+              <select id="birth-year" class="form-control">
+                <option value="">Seleccionar año</option>
+                <% var year = moment(birth).format('YYYY') %>
+                <% for (var y = moment().year(); y >= 1900; y--) { %>
+                  <option <% if (y == year) { %> selected<% } %>><%- y %></option>
+                <% } %>
+              </select>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nationality -->
+    <div class="form-group">
+      <label for="nationality" class="col-sm-2 control-label">Nacionalidad</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="nationality" placeholder="Añadir nacionalidad" value="<%- nationality %>">
+      </div>
+    </div>
+
+    <!-- PUN & RDUNJA -->
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="pun" <% if (pun) { print('checked') } %>> Premio Universidad Nacional
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" id="rdunja" <% if (rdunja) { print('checked') } %>> Reconocimiento Distinción Universidad Nacional para Jóvenes Académicos
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset><!-- /fieldset -->
+
+  <br>
+  <h3>Nombramiento</h3>
+  <hr>
+  
+  <!-- fieldset -->
+  <fieldset>
+    <!-- Adscription -->
+    <div class="form-group">
+      <label for="adscription" class="col-sm-2 control-label">Adscripción</label>
+      <div class="col-sm-10">
+        <select class="form-control saveOnChange" id="adscription">
+          <option value="">Selecciona la adscripción</option>
+          <% var adscriptions = ['División de Estudios Profesionales', 'División de Estudios de Posgrado', 'Sistema de Universidad Abierta y Educación a Distancia']; %>
+          <% _.each(adscriptions, function (a) { %>
+          <option<% if (a === adscription) { %> selected<% } %>><%- a%></option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+    <!-- College -->
+    <div class="form-group">
+      <label for="college" class="col-sm-2 control-label">Colegio</label>
+      <div class="col-sm-10">
+        <select class="form-control saveOnChange" id="college">
+          <option value="">Selecciona el colegio</option>
+          <% var colleges = ['Colegio de Bibliotecología y Estudios de la Información', 'Desarrollo y Gestión Interculturales', 'Colegio de Estudios Latinoamericanos', 'Colegio de Filosofía', 'Colegio de Geografía', 'Colegio de Historia', 'Colegio de Letras Clásicas', 'Colegio de Letras Hispánicas', 'Colegio de Letras Modernas', 'Colegio de Literatura Dramática y Teatro', 'Colegio de Pedagogía']; %>
+          <% _.each(colleges, function (c) { %>
+          <option<% if (c === college) { %> selected<% } %>><%- c %></option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <!-- Academic & Category -->
+    <div class="form-group">
+      <div class="col-sm-6">
+        <div class="row">
+          <label for="appointment-academic" class="col-sm-4 control-label">Académico</label>
+          <div class="col-sm-8">
+            <select class="form-control saveOnChange" id="appointment-academic">
+              <option value="">Selecciona el tipo de académico</option>
+              <% var academics = ['Profesor', 'Investigador', 'Técnico Académico']; %>
+              <% _.each(academics, function (a) { %>
+              <option<% if (a === appointment.academic) { %> selected<% } %>><%- a %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label for="appointment-category" class="col-sm-4 control-label">Categoría</label>
+          <div class="col-sm-8">
+            <select class="form-control saveOnChange" id="appointment-category">
+              <option value="">Selecciona la categoría</option>
+              <% var categories = ['Asociado', 'Auxiliar', 'Titular']; %>
+              <% _.each(categories, function (c) { %>
+              <option<% if (c === appointment.category) { %> selected<% } %>><%- c %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level & Permanence -->
+    <div class="form-group">
+      <div class="col-sm-6">
+        <div class="row">
+          <label for="appointment-level" class="col-sm-4 control-label">Nivel</label>
+          <div class="col-sm-8">
+            <select class="form-control saveOnChange" id="appointment-level">
+              <option value="">Selecciona el nivel</option>
+              <% var levels = ['A', 'B', 'C']; %>
+              <% _.each(levels, function (l) { %>
+              <option<% if (l === appointment.level) { %> selected<% } %>><%- l %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="row">
+          <label for="appointment-permanence" class="col-sm-4 control-label">Permanencia</label>
+          <div class="col-sm-8">
+            <select class="form-control saveOnChange" id="appointment-permanence">
+              <option value="">Selecciona la permanencia</option>
+              <% var permanences = ['Emérito', 'Extraordinario', 'Ordinario', 'Visitante']; %>
+              <% _.each(permanences, function (p) { %>
+              <option<% if (p === appointment.permanence) { %> selected<% } %>><%- p %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fulltime & Definitiveness -->
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <div class="checkbox-inline">
+          <label>
+            <input class="saveOnChange" type="checkbox" id="appointment-fulltime" <% if (appointment.fulltime) { print('checked') } %>> Tiempo Completo
+          </label>
+        </div>
+        <div class="checkbox-inline">
+          <label>
+            <input class="saveOnChange" type="checkbox" id="appointment-definitiveness" <% if (appointment.definitiveness) { print('checked') } %>> Definitividad
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- PRIDE -->
+    <div class="form-group">
+      <label for="pride" class="col-sm-2 control-label">PRIDE</label>
+      <div class="col-sm-10">
+        <select class="form-control saveOnChange" id="pride">
+          <option value="">Selecciona el nivel de PRIDE</option>
+          <% var prides = ['A', 'B', 'C', 'D']; %>
+          <% _.each(prides, function (p) { %>
+          <option<% if (p === pride) { %> selected<% } %>><%- p %></option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+    <!-- Since -->
+    <div class="form-group">
+      <label for="since-day" class="col-sm-2 control-label">Antigüedad</label>
+      <div class="col-sm-10">
+        <div class="row">
+          <div class="col-xs-4">
+            <select id="since-day" class="form-control">
+              <option value="">Seleccionar día</option>
+              <% var day = moment(since).format('D') %>
+              <% for (var d = 1; d <= 31; d++) { %>
+                <option value="<%- d %>" <% if (d == day) { %> selected<% } %>><%- moment({ day: d }).format('DD') %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="col-xs-4">
+            <select id="since-month" class="form-control">
+              <option value="">Seleccionar mes</option>
+              <% var month = moment(since).format('M') - 1 %>
+              <% for (var m = 0; m <= 11; m++) { %>
+                <option value="<%- m %>" <% if (m == month) { %> selected<% } %>><%- moment({ month: m }).format('MMMM') %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="col-xs-4">
+              <select id="since-year" class="form-control">
+                <option value="">Seleccionar año</option>
+                <% var year = moment(since).format('YYYY') %>
+                <% for (var y = moment().year(); y >= 1900; y--) { %>
+                  <option <% if (y == year) { %> selected<% } %>><%- y %></option>
+                <% } %>
+              </select>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <!-- Status -->
+    <div class="form-group">
+      <label for="status" class="col-sm-2 control-label">Estado</label>
+      <div class="col-sm-10">
+        <select class="form-control saveOnChange" id="status">
+          <option value="">Selecciona el estado</option>
+          <% var statuses = ['Activo', 'Jubilado', 'Sabático']; %>
+          <% _.each(statuses, function (s) { %>
+          <option<% if (s === status) { %> selected<% } %>><%- s %></option>
+          <% }) %>
+        </select>
+      </div>
+    </div>
+  </fieldset><!-- /fieldset -->
+
+
+  <br>
+  <h3>Historia Académica</h3>
+  <hr>
+
+  <!-- fieldset -->
+  <fieldset>
+    <!-- Curriculum -->
+    <div class="form-group">
+      <label for="curriculum" class="col-sm-2 control-label">Semblanza</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="curriculum" cols="30" rows="10"><%= curriculum %></textarea>
+      </div>
+    </div>
+  </fieldset><!-- /fieldset -->
+
+  <!-- fieldset -->
+  <fieldset>
+    <!-- Training -->
+    <div class="form-group">
+      <label for="training" class="col-sm-2 control-label">Formación</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="training" cols="30" rows="10"><%= training %></textarea>
+      </div>
+    </div>
+  </fieldset><!-- /fieldset -->
+
+  <!-- fieldset -->
+  <fieldset>
+    <!-- Teaching -->
+    <div class="form-group">
+      <label for="teaching" class="col-sm-2 control-label">Docencia</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="teaching" cols="30" rows="10"><%= teaching %></textarea>
+      </div>
+    </div>
+    <!-- Thesis -->
+    <div class="form-group">
+      <label for="teaching_thesis" class="col-sm-2 control-label">Formación de recursos humanos</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="teaching_thesis" cols="30" rows="10"><%= teaching_thesis %></textarea>
+        <small class="text-muted"><span class="glyphicon glyphicon-question-sign"></span> Añadir información de las tesis dirigidas</small>
+      </div>
+    </div>
+  </fieldset><!-- /fieldset -->
+
+  <!-- fieldset -->
+  <fieldset>
+    <!-- Research -->
+    <div class="form-group">
+      <label for="research" class="col-sm-2 control-label">Investigación</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="research" cols="30" rows="10"><%= research %></textarea>
+      </div>
+    </div>
+  </fieldset><!-- /fieldset -->
+
+  <!-- fieldset -->
+  <fieldset>
+    <!-- Publishing -->
+    <div class="form-group">
+      <label for="publishing" class="col-sm-2 control-label">Publicaciones</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="publishing" cols="30" rows="10"><%= publishing %></textarea>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="creations" class="col-sm-2 control-label">Obras y actividades de creación</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="creations" cols="30" rows="10"><%= creations %></textarea>
+        <small class="text-muted"><span class="glyphicon glyphicon-question-sign"></span> Añadir información de publicaciones (novela, poesía, etc.), obra plástica, actividades escénicas, composiciones y ejecuciones musicales, exposiciones, etcétera.</small>
+      </div>
+    </div>
+  </fieldset><!-- /fieldset -->
+
+  <!-- fieldset -->
+  <fieldset>
+    <!-- Grants -->
+    <div class="form-group">
+      <label for="grants" class="col-sm-2 control-label">Becas</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="grants" cols="30" rows="10"><%= grants %></textarea>
+      </div>
+    </div>
+    <!-- Encouragements -->
+    <div class="form-group">
+      <label for="encouragements" class="col-sm-2 control-label">Estímulos</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="encouragements" cols="30" rows="10"><%= encouragements %></textarea>
+      </div>
+    </div>
+    <!-- Awards -->
+    <div class="form-group">
+      <label for="awards" class="col-sm-2 control-label">Distinciones y premios</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="awards" cols="30" rows="10"><%= awards %></textarea>
+      </div>
+    </div>
+  </fieldset><!-- /fieldset -->
+
+  <!-- fieldset -->
+  <fieldset>
+    <!-- Events -->
+    <div class="form-group">
+      <label for="events" class="col-sm-2 control-label">Congresos, Simposios, Conferencias</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="events" cols="30" rows="10"><%= events %></textarea>
+      </div>
+    </div>
+    <!-- Associations -->
+    <div class="form-group">
+      <label for="associations" class="col-sm-2 control-label">Pertenencia a sociedades o asociaciones académicas</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="associations" cols="30" rows="10"><%= associations %></textarea>
+      </div>
+    </div>
+    <!-- Administration -->
+    <div class="form-group">
+      <label for="administration" class="col-sm-2 control-label">Labores de gestión y participación institucional</label>
+      <div class="col-sm-10">
+        <textarea class="form-control" id="administration" cols="30" rows="10"><%= administration %></textarea>
+      </div>
+    </div>
+  </fieldset><!-- /fieldset -->
+
+</form>

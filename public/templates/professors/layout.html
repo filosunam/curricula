@@ -1,0 +1,103 @@
+<% var user = getUser(); %>
+<!-- .container -->
+<div class="container">
+  <!-- .row -->
+  <div class="row">
+    <!-- #info -->
+    <div id="info" class="col-md-4">
+      <!-- .panel -->
+      <div class="panel panel-default affix-panel" data-spy="affix" data-offset-top="80" data-offset-bottom="80">
+        <!-- .panel-heading -->
+        <div class="panel-heading clearfix">
+          <% if (user.role === 'Administrator') { %>
+          <!-- Controls -->
+          <div class="btn-group pull-right">
+            <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="professor-view" href="#/profesores/<%- _id %>">
+                <span class="glyphicon glyphicon-eye-open"></span> Ver profesor</a></li>
+              <li><a class="professor-edit" href="#">
+                <span class="glyphicon glyphicon-edit"></span> Editar profesor</a></li>
+              <li><a class="professor-destroy" href="#">
+                <span class="glyphicon glyphicon-trash"></span> Eliminar profesor</a></li>
+            </ul>
+          </div>
+          <% } %>
+
+          <% if (avatar) { %>
+            <img src="<%- avatar %>" alt="<%- firstname %> <%- lastname %>" class="img-avatar pull-left">
+          <% } %>
+          <span class="bind-degree"></span> <span class="bind-fullname"></span><br>
+          <span class="bind-pun"></span> <span class="bind-rdunja"></span>
+          <div class="bind-appointment"></div>
+        </div><!-- /.panel-heading -->
+
+        <!-- .table -->
+        <table class="table table-striped">
+          <tbody>
+            <% if (user.role) { %>
+            <tr>
+              <td>R.F.C.:</td>
+              <td class="bind-rfc"><%- rfc %></td>
+            </tr>
+            <% } %>
+
+            <tr>
+              <td>Nacimiento:</td>
+              <td>
+                <span class="bind-birth"></span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Nacionalidad:</td>
+              <td class="bind-nationality"><%- nationality %></td>
+            </tr>
+
+            <tr>
+              <td>Antigüedad:</td>
+              <td>
+                <span class="bind-since"></span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Adscripción:</td>
+              <td class="bind-adscription"><%- adscription %></td>
+            </tr>
+
+            <tr>
+              <td>Colegio:</td>
+              <td class="bind-college"><%- college %></td>
+            </tr>
+
+            <% if (user.role) { %>
+            <tr>
+              <td>PRIDE:</td>
+              <td>
+                <span class="bind-pride"></span>
+              </td>
+            </tr>
+            <% } %>
+
+            <% if (user.role) { %>
+            <tr>
+              <td>Estado:</td>
+              <td class="bind-status"><%- status %></td>
+            </tr>
+            <% } %>
+
+          </tbody>
+        </table><!-- /.table -->
+        <div class="panel-footer">
+          <span class="glyphicon glyphicon-time"></span> Última actualización: <span class="bind-updated"></span>
+        </div>
+      </div><!-- /.panel -->
+    </div><!-- /#info -->
+    <!-- #details -->
+    <div id="details" class="col-md-8">
+    </div><!-- /#details -->
+  </div><!-- /.row -->
+</div><!-- /.container -->

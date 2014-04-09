@@ -1,0 +1,28 @@
+<div class="form-group">
+  <strong>Filtrar por:</strong>
+
+  <label class="checkbox <% if(filters.pun != true) { print('checkbox-disabled') } %>">
+    <input type="checkbox" id="pun" value="true" <% if(filters.pun == true) { print('checked') } %>> Premio Universidad Nacional
+  </label>
+  <label class="checkbox <% if(filters.rdunja != true) { print('checkbox-disabled') } %>">
+    <input type="checkbox" id="rdunja" value="true" <% if(filters.rdunja == true) { print('checked') } %>> Reconocimiento Distinción Universidad Nacional para Jóvenes Académicos
+  </label>
+  <label class="checkbox <% if(filters.adscription != 'División de Estudios Profesionales') { print('checkbox-disabled') } %>">
+    <input type="checkbox" id="adscription_1" value="División de Estudios Profesionales" <% if(filters.adscription == 'División de Estudios Profesionales') { print('checked') } %>> División de Estudios Profesionales
+  </label>
+  <label class="checkbox <% if(filters.adscription != 'Sistema de Universidad Abierta y Educación a Distancia') { print('checkbox-disabled') } %>">
+    <input type="checkbox" id="adscription_2" value="Sistema de Universidad Abierta y Educación a Distancia" <% if(filters.adscription == 'Sistema de Universidad Abierta y Educación a Distancia') { print('checked') } %>> SUAyED
+  </label>
+  <label class="checkbox <% if(filters.adscription != 'División de Estudios de Posgrado') { print('checkbox-disabled') } %>">
+    <input type="checkbox" id="adscription_3" value="División de Estudios de Posgrado" <% if(filters.adscription == 'División de Estudios de Posgrado') { print('checked') } %>> División de Estudios de Posgrado
+  </label>
+  <label class="checkbox <% if(filters.fulltime != true) { print('checkbox-disabled') } %>">
+    <input type="checkbox" id="fulltime" value="true" <% if(filters.fulltime == true) { print('checked') } %>> Profesores de Tiempo Completo
+  </label>
+  <label class="checkbox <% if(filters.course_definitiveness != true) { print('checkbox-disabled') } %>">
+    <input type="checkbox" id="course_definitiveness" value="true" <% if(filters.course_definitiveness == true) { print('checked') } %>> Profesores de Asignatura Definitivos
+  </label>
+  <label class="checkbox <% if(filters.course != true) { print('checkbox-disabled') } %>">
+    <input type="checkbox" id="course" value="true" <% if(filters.course == true) { print('checked') } %>> Profesores de Asignatura
+  </label>
+</div>

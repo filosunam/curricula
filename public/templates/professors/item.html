@@ -1,0 +1,45 @@
+<div class="col-sm-6 col-md-6 col-lg-4">
+  <div class="panel panel-default clearfix">
+    <div class="panel-body">
+      <% if (avatar) { %>
+      <a href="#/profesores/<%- _id %>">
+        <img src="<%- avatar %>" width="40%" alt="<%- firstname %> <%- lastname %>" class="img-avatar pull-left">
+      </a>
+      <% } %>
+      <%
+        switch (degree) {
+          case 'Licenciatura':
+            print('Lic.');
+            break;
+          case 'Maestría':
+            if ( genre === 'Masculino' ) {
+              print('Mtro.');
+            } else {
+              print('Mtra.');
+            }
+            break;
+          case 'Doctorado':
+            if ( genre === 'Masculino' ) {
+              print('Dr.');
+            } else {
+              print('Dra.');
+            }
+            break;
+        }
+      %> <%- firstname %> <%- lastname %>
+      <div>
+        <% if (pun) { %><span class="label label-default">PUN</span><% } %>
+        <% if (rdunja) { %><span class="label label-default">RDUNJA</span><% } %>
+      </div>
+      <small class="text-muted">
+        <% if (appointment) { %>
+          <%- appointment.academic %>
+          <% if (appointment.category) { %><%- appointment.category %><% } %>
+          <% if (appointment.level) { %>"<%- appointment.level %>"<% } %>
+          <% if (appointment.fulltime) { %>TC<% } %>
+          <% if (appointment.definitiveness) { %>Definitivo<% } %>
+        <% } %>
+      </small>
+    </div>
+  </div>
+</div>

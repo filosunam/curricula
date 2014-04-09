@@ -1,0 +1,129 @@
+<% if (curriculum || training || teaching || teaching_thesis || research || publishing || creations || grants || encouragements || awards || events || associations || administration) { %>
+
+<div style="height: 100px">
+  <h1 class="bind-fullname"></h1>
+  <div class="affix-menu" data-spy="affix" data-offset-top="155">
+    <div id="navbar-curriculum">
+      <ul class="nav">
+        <% if (curriculum) { %><li><a href="#curriculum" class="btn btn-sm btn-primary">Semblanza</a></li><% } %>
+        <% if (training) { %><li><a href="#training" class="btn btn-sm btn-primary">Formación</a></li><% } %>
+        <% if (teaching || teaching_thesis) { %><li><a href="#teaching" class="btn btn-sm btn-primary">Docencia</a></li><% } %>
+        <% if (research) { %><li><a href="#research" class="btn btn-sm btn-primary">Investigación</a></li><% } %>
+        <% if (publishing || creations) { %><li><a href="#production" class="btn btn-sm btn-primary">Producción</a></li><% } %>
+        <% if (grants || encouragements || awards) { %><li><a href="#distinctions" class="btn btn-sm btn-primary">Distinciones</a></li><% } %>
+        <% if (events || associations || administration) { %><li><a href="#participations" class="btn btn-sm btn-primary">Participaciones</a></li><% } %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="content" style="padding-bottom: 150px;">
+
+  <% if (curriculum) { %>
+  <!-- Semblanza -->
+  <div class="section-scroll" id="curriculum">
+    <h2>Semblanza</h2>
+    <%= markdown(curriculum) %>
+  </div>
+  <% } %>
+
+  <% if (training) { %>
+  <!-- Formación -->
+  <div class="section-scroll" id="training">
+    <h2>Formación</h2>
+    <%= markdown(training) %>
+  </div>
+  <% } %>
+
+  <% if (teaching || teaching_thesis) { %>
+  <!-- Docencia -->
+  <div class="section-scroll" id="teaching">
+    <h2>Docencia</h2>
+    <% if (teaching) { %>
+      <%= markdown(teaching) %>
+    <% } %>
+
+    <% if (teaching_thesis) { %>
+      <h3 class="text-muted">Formación de recursos humanos</h3>
+      <%= markdown(teaching_thesis) %>
+    <% } %>
+  </div>
+  <% } %>
+
+  <% if (research) { %>
+  <!-- Investigación -->
+  <div class="section-scroll" id="research">
+    <h2>Investigación</h2>
+    <%= markdown(research) %>
+  </div>
+  <% } %>
+
+  <% if (publishing || creations) { %>
+  <!-- Producción -->
+  <div class="section-scroll" id="production">
+    <h2>Producción</h2>
+
+    <% if (publishing) { %>
+      <h3 class="text-muted">Publicaciones</h3>
+      <%= markdown(publishing) %>
+    <% } %>
+
+    <% if (creations) { %>
+      <h3 class="text-muted">Obras y actividades de creación</h3>
+      <%= markdown(creations) %>
+    <% } %>
+  </div>
+  <% } %>
+
+  <% if (grants || encouragements || awards) { %>
+  <!-- Distinciones -->
+  <div class="section-scroll" id="distinctions">
+    <h2>Distinciones</h2>
+
+    <% if (grants) { %>
+      <h3 class="text-muted">Becas</h3>
+      <%= markdown(grants) %>
+    <% } %>
+
+    <% if (encouragements) { %>
+      <h3 class="text-muted">Estímulos</h3>
+      <%= markdown(encouragements) %>
+    <% } %>
+
+    <% if (awards) { %>
+      <h3 class="text-muted">Distinciones y Premios</h3>
+      <%= markdown(awards) %>
+    <% } %>
+  </div>
+  <% } %>
+
+  <% if (events || associations || administration) { %>
+  <!-- Participaciones -->
+  <div class="section-scroll" id="participations">
+    <h2>Participaciones</h2>
+
+    <% if (events) { %>
+      <h3 class="text-muted">Congresos, Simposios, Conferencias</h3>
+      <%= markdown(events) %>
+    <% } %>
+
+    <% if (associations) { %>
+      <h3 class="text-muted">Pertenencia a sociedades o asociaciones académicas</h3>
+      <%= markdown(associations) %>
+    <% } %>
+
+    <% if (administration) { %>
+      <h3 class="text-muted">Labores de gestión y participación institucional</h3>
+      <%= markdown(administration) %>
+    <% } %>
+  </div>
+  <% } %>
+
+</div>
+
+<% } else { %>
+
+  <h1 class="bind-fullname"></h1>
+  <div class="alert alert-danger">No hay más información acerca de este académico</div>
+
+<% } %>

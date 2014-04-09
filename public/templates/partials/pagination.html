@@ -1,0 +1,23 @@
+<% if (totalPages > 1) { %>
+  <ul class="pager">
+    <li<% if (currentPage <= 1) { %> class="disabled"<% } %>>
+      <a href="#" class="prev">&laquo; Anterior</a></li>
+    
+    <li<% if (currentPage >= totalPages) { %> class="disabled"<% } %>>
+      <a href="#" class="next">Siguiente &raquo;</a></li>
+  </ul>
+<% } %>
+
+<p class="text-center text-muted">
+  <small>
+    <% if (totalRecords == 1) { %>
+      Se encontró <%- totalRecords  %> resultado
+    <% } else if (totalRecords > 1) { %>
+      Se encontraron <%- totalRecords  %> resultados
+    <% } else { %>
+      No se encontró ningún resultado
+    <% } %>
+
+    <% if (totalPages > 1) { %><br>Mostrando página <%- currentPage %> de <%- totalPages %><% } %>
+  </small>
+</p>

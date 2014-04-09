@@ -1,0 +1,7 @@
+<div class="form-group">
+  <label class="control-label">Ordenar por:</label>
+  <select id="sort" name="sort" class="form-control input-sm">
+    <option value="lastname" <% if(sort.field == 'lastname') { print('selected') } %>>Nombre</option>
+    <option value="since" <% if(sort.field == 'since') { print('selected') } %>>Antigüedad</option>
+  </select>
+</div>
