@@ -62,6 +62,9 @@ define([
         browse_button: this.ui.browseButton.get(0),
         container: this.el,
         multi_selection: false,
+        headers: {
+          'X-CSRF-Token': $("meta[name='csrf-token']").attr("content")
+        },
         max_file_size: '5mb',
         filters : [{ title : "Archivos de imagen (jpg, png)", extensions: "jpg,jpeg,png" }],
         resize: { width: 300, height: 300, quality: 90, crop: true},
